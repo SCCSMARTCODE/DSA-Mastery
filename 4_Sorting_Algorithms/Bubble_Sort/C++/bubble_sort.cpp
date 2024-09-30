@@ -35,7 +35,7 @@ void bubble_sort(std::vector<int> &arr) {
     bool sorted = false;
     while (!sorted) {
         sorted = true;
-        for (size_t idx = 0; idx < len_unsorted - 1; idx++) {
+        for (int idx = 0; idx < len_unsorted - 1; idx++) {
             if (arr[idx] > arr[idx + 1]) {
                 std::swap(arr[idx], arr[idx + 1]);
                 sorted = false;
