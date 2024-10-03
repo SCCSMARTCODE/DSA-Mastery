@@ -1,44 +1,43 @@
-# **Selection Sort in C++, C, and Python**
+# **Insertion Sort in C++, C, and Python**
 
 ## **Introduction**
-**Selection Sort** is a simple, comparison-based sorting algorithm. It divides the array into a sorted and an unsorted region, repeatedly selecting the smallest element from the unsorted portion and moving it to the sorted portion. It is easy to implement but has a time complexity of **O(n²)**, making it inefficient for large datasets.
+Insertion Sort is a simple and intuitive sorting algorithm. It works similarly to how you might sort playing cards in your hands. The algorithm builds the sorted array one element at a time by comparing each new element to the ones already sorted and inserting it in the correct position.
 
-In this project, you will implement **Selection Sort** from scratch in **C++**, **C**, and **Python** and test it on various cases to validate the correctness of the sorting.
+This project focuses on implementing **Insertion Sort** in **C++**, **C**, and **Python** from scratch. You will also validate the sorting algorithm using test cases to ensure its correctness.
 
 ---
 
 ## **Project Overview**
 
-In this project, you will:
-1. Implement the **Selection Sort** algorithm.
-2. Create a helper function to check if the array is sorted.
-3. Test the algorithm on different datasets to ensure its accuracy.
+This project includes:
+1. Implementing the **Insertion Sort** algorithm.
+2. Writing a function to check if an array is sorted.
+3. Testing the implementation on various datasets.
+
+The goal is to help you understand Insertion Sort and give you hands-on experience in sorting arrays using this algorithm.
 
 ---
 
-## **Understanding Selection Sort**
+## **Understanding Insertion Sort**
 
-Selection Sort works by:
-1. Finding the minimum element in the unsorted portion of the array.
-2. Swapping it with the first element of the unsorted portion.
-3. Repeating the process for the rest of the array until the entire array is sorted.
+Insertion Sort involves the following steps:
+1. Iterate through the array, starting with the second element.
+2. Compare the current element to the elements before it.
+3. Shift all elements larger than the current element one position to the right.
+4. Insert the current element in its correct position.
+5. Repeat the process until the array is sorted.
 
-### **Key Characteristics**:
-- **Time Complexity**:
-  - Worst and Average Case: **O(n²)**
-  - Best Case: **O(n²)** (even if the array is already sorted)
-- **Space Complexity**: **O(1)**, since it’s an in-place sorting algorithm.
-- **In-place**: Yes, it doesn’t require extra space to sort the array.
-- **Stable**: No, it may change the relative order of equal elements.
+The **time complexity** of Insertion Sort is **O(n^2)** in the worst case (when the array is reverse sorted), but it is **O(n)** for nearly sorted arrays, making it efficient for small datasets or partially sorted arrays.
 
 ---
 
 ## **Project Structure**
 
-This project will consist of the following:
-- **Selection Sort Function** (`selectionSort`): Implements the sorting algorithm.
-- **Helper Functions** (`isSorted` and `displayArray`): To check if the array is sorted and display the array before and after sorting.
-- **Main Program**: Drives the sorting, validation, and display logic.
+This project includes:
+- **Insertion Sort Function** (`insertionSort`): The core sorting function.
+- **Validation Function** (`isSorted`): Checks if the array is sorted.
+- **Display Function** (`displayArray`): Displays the array before and after sorting.
+- **Main Program**: Drives the program by calling these functions.
 
 ---
 
@@ -46,19 +45,22 @@ This project will consist of the following:
 
 ### **Pseudocode for the Project**
 
+The pseudocode will help guide the implementation in C++, C, and Python:
+
 ```plaintext
-FUNCTION selectionSort(arr):
-    FOR i FROM 0 TO length(arr) - 1:
-        SET minIndex = i
-        FOR j FROM i + 1 TO length(arr):
-            IF arr[j] < arr[minIndex]:
-                SET minIndex = j
-        SWAP arr[i] WITH arr[minIndex]
+FUNCTION insertionSort(arr):
+    FOR i FROM 1 TO length(arr):
+        SET key = arr[i]
+        SET j = i - 1
+        WHILE j >= 0 AND arr[j] > key:
+            arr[j + 1] = arr[j]
+            j = j - 1
+        arr[j + 1] = key
     END FOR
 END FUNCTION
 
 FUNCTION isSorted(arr):
-    FOR i FROM 1 TO length(arr) - 1:
+    FOR i FROM 1 TO length(arr):
         IF arr[i - 1] > arr[i]:
             RETURN False
     RETURN True
@@ -71,12 +73,12 @@ FUNCTION displayArray(arr):
 END FUNCTION
 
 MAIN FUNCTION:
-    DECLARE arr AS [64, 25, 12, 22, 11]
+    DECLARE arr AS [12, 11, 13, 5, 6]
 
     PRINT "Original array: "
     CALL displayArray(arr)
 
-    CALL selectionSort(arr)
+    CALL insertionSort(arr)
 
     PRINT "Sorted array: "
     CALL displayArray(arr)
@@ -92,30 +94,31 @@ END MAIN FUNCTION
 
 ## **Implementations**
 
-The implementation of Selection Sort can be done in:
-- [C++ Code](./selection_sort.cpp)
-- [C Code](./selection_sort.c)
-- [Python Code](./selection_sort.py)
+You will implement the following files:
 
-You will follow the pseudocode provided to implement the algorithm in each language. Each function should behave similarly in each language, ensuring consistency.
+- [C++ Code](./insertion_sort.cpp)
+- [C Code](./insertion_sort.c)
+- [Python Code](./insertion_sort.py)
+
+Make sure your code reflects the pseudocode logic in each of the languages.
 
 ---
 
 ## **Testing**
 
-You should test your Selection Sort implementation on various types of datasets:
-1. **Random unsorted arrays**: `[64, 25, 12, 22, 11]`
-2. **Already sorted arrays**: `[1, 2, 3, 4, 5, 6, 7]`
-3. **Reverse sorted arrays**: `[10, 9, 8, 7, 6, 5, 4]`
-4. **Arrays with negative numbers**: `[-3, -7, 0, 2, 5]`
-5. **Arrays with duplicates**: `[3, 1, 4, 3, 2, 5]`
+Once you've implemented the Insertion Sort algorithm, you should test it on various arrays, such as:
+1. **Random unsorted arrays**: `[15, 19, 8, 2, 17]`
+2. **Already sorted arrays**: `[1, 2, 3, 4, 5]`
+3. **Reverse sorted arrays**: `[20, 15, 10, 5, 1]`
+4. **Arrays with negative numbers**: `[-8, -3, -1, -9, 0]`
+5. **Arrays with duplicates**: `[7, 3, 7, 1, 5, 7]`
 
 ### **Example Output**
-After running the program, the output might look something like:
+After running the program, you should see the following output:
 
 ```plaintext
-Original array: 64 25 12 22 11 
-Sorted array: 11 12 22 25 64 
+Original array: 12 11 13 5 6
+Sorted array: 5 6 11 12 13
 The array is sorted correctly.
 ```
 
@@ -123,25 +126,25 @@ The array is sorted correctly.
 
 ## **Learning Outcomes**
 
-By the end of this project, you will:
-1. Understand the **Selection Sort** algorithm and its characteristics.
-2. Gain hands-on experience implementing sorting algorithms from scratch.
-3. Learn how to validate sorting algorithms by writing helper functions and testing with different datasets.
-4. Be able to distinguish between Selection Sort and other algorithms like Bubble Sort and Quick Sort.
+By completing this project, you will:
+1. Understand the **Insertion Sort** algorithm and its performance.
+2. Be able to implement Insertion Sort in **C++**, **C**, and **Python**.
+3. Validate your sorting function by testing it on various datasets.
+4. Improve your problem-solving skills through hands-on coding and debugging.
 
 ---
 
 ## **Further Improvements**
 
-After successfully implementing Selection Sort, consider making these improvements:
-1. **Optimize swaps**: Try to reduce the number of swaps by checking if swapping is necessary.
-2. **Performance comparison**: Compare the performance of Selection Sort with more efficient algorithms like Quick Sort or Merge Sort.
-3. **Visualize the sorting process**: Create a graphical representation of the sorting process to better understand how Selection Sort operates.
+Once you've implemented Insertion Sort, consider:
+1. Measuring the **time complexity** on different datasets and comparing Insertion Sort to more advanced algorithms like Merge Sort or Quick Sort.
+2. Testing on larger datasets to better understand its performance.
+3. Implementing optimizations to reduce unnecessary comparisons for nearly sorted arrays.
 
 ---
 
 ## **Resources**
-- [GeeksforGeeks - Selection Sort](https://www.geeksforgeeks.org/selection-sort/)
+- [GeeksforGeeks - Insertion Sort](https://www.geeksforgeeks.org/insertion-sort/)
 - [C++ Documentation](https://en.cppreference.com/w/)
 - [Python Documentation](https://docs.python.org/3/tutorial/datastructures.html)
 - [C Programming Documentation](https://en.cppreference.com/w/c)
@@ -150,4 +153,4 @@ After successfully implementing Selection Sort, consider making these improvemen
 
 ## **Conclusion**
 
-This project will help you understand the basics of the **Selection Sort** algorithm and how to implement it in different programming languages. By testing and validating your implementation with various datasets, you’ll gain a deeper understanding of sorting algorithms and their efficiency.
+This project is an excellent way to learn about sorting algorithms and get hands-on experience with **Insertion Sort**. By following the pseudocode and implementing it in multiple programming languages, you'll gain a deeper understanding of the algorithm and its nuances.
