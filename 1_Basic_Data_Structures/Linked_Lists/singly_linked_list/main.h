@@ -15,6 +15,11 @@ typedef struct sll
 
 
 void append(sll **head, int value);
+void pop_begin(sll **head);
+void pop_end(sll **head);
+void pop_index(sll **head, int index);
+int len(sll **head);
+void rev(sll **head);
 void print_list(sll *temp);
 
 #endif
