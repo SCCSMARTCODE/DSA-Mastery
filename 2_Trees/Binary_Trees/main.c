@@ -1,5 +1,4 @@
 #include "b_tree.h"
-#include <stdio.h>
 
 int main() {
     // Step 1: Initialize the binary tree
