@@ -2,3 +2,4 @@ readme_random
 .vscode
 venv
 .idea
+__pycache__
